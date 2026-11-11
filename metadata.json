@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix PowerShift Admin Solar Calculator \u0026 PDF Generator",
+  "description": "Professional engineering solar PV and battery storage calculator with dynamic live-binding PDF quotation generator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
