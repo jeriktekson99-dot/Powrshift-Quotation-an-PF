@@ -1023,27 +1023,18 @@ Prepared by: ${engineerName}
                 </div>
               </div>
 
-              <div className="flex items-center flex-wrap gap-2.5">
-                <button
-                  onClick={handleSaveCurrentQuotation}
-                  className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded bg-[#D4AF37] text-[#0A3A1E] hover:bg-[#E5C158] transition-colors shadow-sm active:scale-95"
-                >
-                  <Plus className="w-3.5 h-3.5 text-[#0A3A1E]" />
-                  <span>Save Quotation</span>
-                </button>
-              </div>
             </div>
 
             {/* Filter & Summary Bar */}
-            <div className="bg-white border border-[#CBD5E1] rounded-lg p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
-              <div className="relative flex-1 min-w-[260px] max-w-md">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+            <div className="bg-white border border-[#CBD5E1] rounded-lg p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
+              <div className="relative flex-1 min-w-[280px]">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search by client name, address, reference..."
-                  className="w-full bg-[#F8FAFC] border border-slate-300 rounded pl-9 pr-8 py-2 text-xs font-medium text-slate-900 focus:outline-none focus:border-[#0A3A1E] focus:ring-1 focus:ring-[#0A3A1E]"
+                  placeholder="Search by client name, address, phone number, email, reference..."
+                  className="w-full bg-[#F8FAFC] border border-slate-300 rounded-md pl-10 pr-9 py-2 text-xs font-medium text-slate-900 focus:outline-none focus:border-[#0A3A1E] focus:ring-1 focus:ring-[#0A3A1E]"
                 />
                 {searchQuery && (
                   <button
@@ -1055,15 +1046,10 @@ Prepared by: ${engineerName}
                 )}
               </div>
 
-              <div className="flex items-center gap-2 text-xs text-slate-600">
+              <div className="flex items-center gap-2 text-xs text-slate-600 shrink-0">
                 <span className="font-semibold text-slate-800">
                   Showing {filteredSavedQuotations.length} of {savedQuotations.length} Saved Proposals
                 </span>
-                {activeLoadedId && (
-                  <span className="hidden sm:inline px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold text-[11px]">
-                    Active: {savedQuotations.find((q) => q.id === activeLoadedId)?.clientName || 'Loaded'}
-                  </span>
-                )}
               </div>
             </div>
 
@@ -1120,19 +1106,12 @@ Prepared by: ${engineerName}
                       <div className="p-4">
                         {/* Top Row: Client Name & Status */}
                         <div className="flex items-start justify-between gap-2 border-b border-slate-100 pb-2.5 mb-2.5">
-                          <div>
-                            <div className="flex items-center gap-1.5 flex-wrap">
+                            <div>
                               <h4 className="font-bold text-sm text-slate-900">{record.clientName}</h4>
-                              {isActive && (
-                                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-[#059669] text-white uppercase tracking-wider">
-                                  ACTIVE
-                                </span>
-                              )}
+                              <div className="text-[10px] font-mono text-slate-500 mt-0.5">
+                                Ref: {record.quoteReference}
+                              </div>
                             </div>
-                            <div className="text-[10px] font-mono text-slate-500 mt-0.5">
-                              Ref: {record.quoteReference}
-                            </div>
-                          </div>
 
                           <button
                             onClick={(e) => handleDeleteQuotation(record.id, e)}
@@ -2485,16 +2464,9 @@ Prepared by: ${engineerName}
                         {/* Top Row: Client Name & Delete Button */}
                         <div className="flex items-start justify-between gap-2">
                           <div>
-                            <div className="flex items-center gap-1.5">
-                              <span className="font-bold text-xs text-slate-900 group-hover:text-[#0A3A1E] transition-colors">
-                                {record.clientName}
-                              </span>
-                              {isActive && (
-                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-[#059669] text-white uppercase tracking-wider">
-                                  ACTIVE
-                                </span>
-                              )}
-                            </div>
+                            <span className="font-bold text-xs text-slate-900 group-hover:text-[#0A3A1E] transition-colors">
+                              {record.clientName}
+                            </span>
                             <div className="text-[10px] font-mono text-slate-500 mt-0.5">
                               Ref: {record.quoteReference}
                             </div>
